@@ -1,0 +1,86 @@
+<?php
+require_once(__DIR__ . '/autoload.php');
+
+$api_instance = new \DiscoverySearchEngine\DiscoverySearchEngine\ApiApi();
+
+
+//   ========================     GET Lignes D'Azur Mobile application ======================
+//
+//$location = new Swagger\Client\Model\Location();
+//$location->setMaxLatitude(43.71213);
+//$location->setMaxLongitude(7.285777999999937);
+//$location->setMinLatitude(43.678129999999996);
+//$location->setMinLongitude(7.245777999999973);
+//$location->setCountries(["fr"]);
+//$location->setCities(["Alpes-Maritimes"]);
+//
+//$price = new Swagger\Client\Model\Price();
+//$price->setMinPrice(0);
+//$price->setMaxPrice(0);
+//
+//$rating = new Swagger\Client\Model\Rating();
+//$rating->setMinRating(0);
+//$rating->setMaxRating(0);
+//
+//$service_type = new Swagger\Client\Model\DiscoveryRequestServiceType();
+//$service_type->setAll("all");
+//
+//$service_search_criteria = new Swagger\Client\Model\DiscoveryRequest();
+//$service_search_criteria->setAccessKey("AIzaSyD7q2VfSG9tptzWNegQMNb6lqhkuWFy_k0");
+//$service_search_criteria->setLocation($location);
+//$service_search_criteria->setGroupOfModule("all");
+//$service_search_criteria->setPrice($price);
+//$service_search_criteria->setRating($rating);
+//$service_search_criteria->setProviders(["apis", "google"]);
+//$service_search_criteria->setServiceType($service_type);
+//
+//$discover_apis = new \Swagger\Client\Model\SearchCriteria(); // \Swagger\Client\Model\SearchCriteria | Represent a service discovery object, used to performs search queries
+//
+//$discover_apis->setEnvironment("PRODUCTION");
+//$discover_apis->setServiceSearchCriteria([$service_search_criteria]);
+//   ========================     /GET Lignes D'Azur Mobile application ======================
+
+
+
+
+//   ========================     GET Autobleue API ======================
+//
+$location = new Swagger\Client\Model\Location();
+$location->setCountries(["fr"]);
+$location->setCities(["Alpes-Maritimes"]);
+
+$price = new Swagger\Client\Model\Price();
+$price->setMinPrice(0);
+$price->setMaxPrice(0);
+
+$rating = new Swagger\Client\Model\Rating();
+$rating->setMinRating(0);
+$rating->setMaxRating(0);
+
+$service_type = new Swagger\Client\Model\DiscoveryRequestServiceType();
+$service_type->setAll("all");
+
+$service_search_criteria = new Swagger\Client\Model\DiscoveryRequest();
+$service_search_criteria->setAccessKey("AIzaSyD7q2VfSG9tptzWNegQMNb6lqhkuWFy_k0");
+$service_search_criteria->setLocation($location);
+$service_search_criteria->setGroupOfModule("all");
+$service_search_criteria->setPrice($price);
+$service_search_criteria->setRating($rating);
+$service_search_criteria->setProviders(["apis", "google"]);
+$service_search_criteria->setServiceType($service_type);
+
+$discover_apis = new \Swagger\Client\Model\SearchCriteria(); // \Swagger\Client\Model\SearchCriteria | Represent a service discovery object, used to performs search queries
+
+$discover_apis->setEnvironment("SANDBOX");
+$discover_apis->setServiceSearchCriteria([$service_search_criteria]);
+//   ========================     /GET Autobleue API  ======================
+
+
+try {
+    $result = $api_instance->apiSearchForService($discover_apis);
+    echo $result->__toString();
+} catch (Exception $e) {
+    echo 'Exception when calling ApiApi->apiSearchForService: ', $e->getMessage(), PHP_EOL;
+}
+
+?>

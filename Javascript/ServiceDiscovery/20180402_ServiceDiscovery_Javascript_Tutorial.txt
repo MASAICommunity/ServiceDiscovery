@@ -1,0 +1,38 @@
+var ServiceDiscovery = require('masai_service_discovery_api');
+
+var api = new ServiceDiscovery.ApiApi
+
+var discoverApis = {
+  "discoveryRequest": [
+    {
+      "location": {
+        "minLatitude": 43.59491496946722,
+        "minLongitude": 7.103082476562463,
+        "maxLatitude": 43.7977308236023,
+        "maxLongitude": 7.422884722656136,
+        "countries": [
+          "fr"
+        ]
+      },
+      "groupOfModule": "public_transport",
+      "accessKey": "AIzaSyD7q2VfSG9tptzWNegQMNb6lqhkuWFy_k0",
+      "providers": [
+        "google",
+        "apis"
+      ],
+      "serviceType": {
+        "discovery": "api"
+      }
+    }
+  ]
+}; // {SearchCriteria} Represent a service discovery object, used to performs search queries
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.apiSearchForService(discoverApis, callback);
